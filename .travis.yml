@@ -20,7 +20,7 @@ deploy:
     skip_cleanup: true
     on:
       tags: true
-script: ./gradlew :app:build :app:connectedDebugAndroidTest
+script: ./gradlew :app:build
 env:
   global:
     - MALLOC_ARENA_MAX=2
