@@ -8,7 +8,7 @@ android:
     - extra
     - platform-tools
     - tools
-    - extra-google-googleplayservices
+    - extra-google-google_play-services
         - extra-google-m2repository
         - extra-android-m2repository
         - addon-google_apis-google-19
