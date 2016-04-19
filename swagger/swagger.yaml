@@ -1,0 +1,159 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: Room API
+  description: Iroda Foglalo API
+  version: "1.0.0"
+# the domain of the service
+host: api.room.com
+# array of all schemes that your API supports
+schemes:
+  - http
+# will be prefixed to all paths
+basePath: /
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /login:
+    get:
+      summary: Login 
+      parameters:
+        - name: email
+          in: query
+          type: string
+        - name: password
+          in: query
+          type: string
+      responses:
+        204:
+          description: Login OK
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /getRooms:
+    get:
+      summary: Get Rooms
+      responses: 
+        200:
+          description: Array of rooms
+          schema:
+            type: array
+            $ref: '#/definitions/Room'
+        default: 
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /getRoomDetails:
+    get:
+      summary: Get Room details
+      parameters:
+        - name: roomId
+          in: query
+          type: string
+      responses:
+        200:
+          description: Array of times
+          schema:
+            type: array
+            $ref: '#/definitions/Time'
+        default: 
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /getParticipants:
+    get:
+      summary: Get known persons
+      parameters:
+        - name: userId
+          in: query
+          type: string
+        - name: roomId
+          in: query
+          type: string
+      responses:
+        200:
+          description: Array of persons
+          schema:
+            type: array
+            $ref: '#/definitions/Person'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /addParticipant:
+    post:
+      summary: Add new person
+      parameters:
+        - in: body
+          name: person
+          schema:
+            $ref: '#/definitions/Person'
+          required: true
+      responses:
+        204:
+          description: New person added
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Room:
+    type: object
+    properties:
+      roomId:
+        type: string
+        description: Identifier.
+      description:
+        type: string
+        description: Description of room.
+      display_name:
+        type: string
+        description: Display name of room.
+  Time:
+    type: object
+    properties:
+      timeId:
+        type: string
+        description: Identifier.
+      roomId:
+        type: string
+        description: Connected Room's Id.
+      userId:
+        type: string
+        description: Connected User's Id.
+      description:
+        type: string
+        description: Description of Time.
+      state:
+        type: boolean
+        description: Room avaliability.
+  Person:
+    type: object
+    properties:
+      first_name:
+        type: string
+        description: First name of the user.
+      last_name:
+        type: string
+        description: Last name of the  user.
+      email:
+        type: string
+        description: Email address of the user.
+      userId:
+        type: string
+        description: Connected User's Id.
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
+
