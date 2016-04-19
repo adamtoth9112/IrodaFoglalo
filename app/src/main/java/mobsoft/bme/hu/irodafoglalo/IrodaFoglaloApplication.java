@@ -15,7 +15,6 @@ public class IrodaFoglaloApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        injector =
-                DaggerIrodaFoglaloApplicationComponent.builder().uIModule(new UIModule(this)).build();
+        injector = DaggerIrodaFoglaloApplicationComponent.builder().uIModule(new UIModule(this)).build();
     }
 }

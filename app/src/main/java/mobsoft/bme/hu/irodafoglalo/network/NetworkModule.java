@@ -21,4 +21,10 @@ public class NetworkModule {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
+
+    @Provides
+    @Singleton
+    public RoomsApi provideRoomsApi(Retrofit retrofit) {
+        return retrofit.create(RoomsApi.class);
+    }
 }

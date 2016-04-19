@@ -20,10 +20,10 @@ import mobsoft.bme.hu.irodafoglalo.ui.rooms.RoomsPresenter;
 public interface IrodaFoglaloApplicationComponent {
     void inject(MainActivity mainActivity);
 
-    void inject(RoomsFragment artistsFragment);
+    void inject(RoomsFragment roomsFragment);
 
-    void inject(RoomsInteractor artistsInteractor);
+    void inject(RoomsInteractor roomsInteractor);
 
-    void inject(RoomsPresenter artistsPresenter);
+    void inject(RoomsPresenter roomsPresenter);
 }
 

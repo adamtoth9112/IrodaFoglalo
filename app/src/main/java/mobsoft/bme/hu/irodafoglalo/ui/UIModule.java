@@ -11,6 +11,7 @@ import dagger.Module;
 import dagger.Provides;
 import mobsoft.bme.hu.irodafoglalo.di.Network;
 import mobsoft.bme.hu.irodafoglalo.ui.main.MainPresenter;
+import mobsoft.bme.hu.irodafoglalo.ui.rooms.RoomsPresenter;
 
 /**
  * Created by mobsoft on 2016. 04. 18..
@@ -36,8 +37,8 @@ public class UIModule {
 
     @Provides
     @Singleton
-    public MainPresenter provideArtistsPresenter() {
-        return new MainPresenter();
+    public RoomsPresenter provideArtistsPresenter() {
+        return new RoomsPresenter();
     }
 
     @Provides
