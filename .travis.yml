@@ -24,7 +24,7 @@ script: ./gradlew :app:build
 env:
   global:
     - MALLOC_ARENA_MAX=2
-
+  - GRADLE_OPTS="-Xmx512m -XX:MaxPermSize=512m"
 sudo: required
 
 before_script:
