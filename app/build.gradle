@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "mobsoft.bme.hu.irodafoglalo"
@@ -20,12 +21,7 @@ android {
         debug {
         }
     }
-    /*
-    MD5:  54:DC:D6:36:93:61:49:33:01:A9:EC:FC:EC:46:2A:81
-    SHA1: D7:A1:7D:45:51:A1:99:15:52:FB:D1:78:5A:7F:EB:77:B7:3D:5B:23
-    SHA256: 4A:0F:A9:7C:5D:52:C4:D9:FF:3D:D4:64:62:4D:B4:15:E4:39:01:11:59:27:39:F9:89:32:1A:EE:77:68:B7:F0
-    SHA1-BASE64: 16F9RVGhmRVS+9F4Wn/rd7c9WyM=
-    */
+
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
         exclude 'META-INF/LICENSE.txt'
@@ -33,6 +29,9 @@ android {
     }
     lintOptions {
         disable 'InvalidPackage'
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
     }
 }
 
@@ -89,5 +88,19 @@ dependencies {
 
     // Mockito
     androidTestCompile "org.mockito:mockito-core:1.10.19"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+    kapt 'com.google.dagger:dagger-compiler:2.0'
+}
+buildscript {
+    ext.kotlin_version = '1.0.1-2'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+repositories {
+    mavenCentral()
 }
