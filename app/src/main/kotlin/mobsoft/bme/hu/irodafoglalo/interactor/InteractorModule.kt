@@ -2,6 +2,7 @@ package mobsoft.bme.hu.irodafoglalo.interactor
 
 import dagger.Module
 import dagger.Provides
+import mobsoft.bme.hu.irodafoglalo.interactor.db.DBInteractor
 import mobsoft.bme.hu.irodafoglalo.interactor.rooms.RoomsInteractor
 
 /**
@@ -13,5 +14,10 @@ class InteractorModule {
     @Provides
     fun provideRoomsInteractor(): RoomsInteractor {
         return RoomsInteractor()
+    }
+
+    @Provides
+    fun provideDBInteractor(): DBInteractor {
+        return DBInteractor()
     }
 }
