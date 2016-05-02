@@ -15,7 +15,7 @@ public class IrodaFoglaloApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        if (BuildConfig.FLAVOR.equals("mock")) {
+        if (BuildConfig.MOCK) {
             injector = DaggerMockIrodaFoglaloApplicationComponent.builder().uIModule(new UIModule(this)).build();
         } else {
             injector = DaggerIrodaFoglaloApplicationComponent.builder().uIModule(new UIModule(this)).build();

@@ -37,9 +37,11 @@ android {
     productFlavors {
         mock {
             applicationId = "mobsoft.bme.hu.irodafoglalo"
+            buildConfigField 'boolean', 'MOCK', 'true'
         }
         prod {
             applicationId = "mobsoft.bme.hu.irodafoglalo"
+            buildConfigField 'boolean', 'MOCK', 'false'
         }
     }
 }
