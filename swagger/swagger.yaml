@@ -21,12 +21,11 @@ paths:
     get:
       summary: Login 
       parameters:
-        - name: email
-          in: query
-          type: string
-        - name: password
-          in: query
-          type: string
+        - in: body
+          name: person
+          schema:
+            $ref: '#/definitions/Person'
+          required: true
       responses:
         204:
           description: Login OK
