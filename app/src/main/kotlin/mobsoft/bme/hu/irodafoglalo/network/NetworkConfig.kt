@@ -7,6 +7,6 @@ class NetworkConfig {
 
     companion object {
         @JvmStatic
-        var ENDPOINT_ADDRESS = "asd"
+        var ENDPOINT_ADDRESS = "http://localhost:8080"
     }
 }

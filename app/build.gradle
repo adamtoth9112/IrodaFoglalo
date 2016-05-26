@@ -36,11 +36,11 @@ android {
 
     productFlavors {
         mock {
-            applicationId = "mobsoft.bme.hu.irodafoglalo"
+            applicationId = "mobsoft.bme.hu.irodafoglalo.mock"
             buildConfigField 'boolean', 'MOCK', 'true'
         }
         prod {
-            applicationId = "mobsoft.bme.hu.irodafoglalo"
+            applicationId = "mobsoft.bme.hu.irodafoglalo.prod"
             buildConfigField 'boolean', 'MOCK', 'false'
         }
     }

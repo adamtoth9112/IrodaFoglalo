@@ -26,6 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.rooms.RoomsActivity"
+            android:label="@string/rooms_title"
+            android:theme="@style/AppTheme"></activity>
 
         <meta-data
             android:name="DATABASE"
@@ -39,7 +43,6 @@
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="mobsoft.bme.hu.irodafoglalo.model" />
-
     </application>
 
 </manifest>

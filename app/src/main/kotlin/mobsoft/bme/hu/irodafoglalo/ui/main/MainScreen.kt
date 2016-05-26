@@ -13,4 +13,6 @@ interface MainScreen {
     fun requestFocus(focusView: String)
 
     fun showProgress(show: Boolean)
+
+    fun showRooms()
 }

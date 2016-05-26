@@ -3,6 +3,7 @@ package mobsoft.bme.hu.irodafoglalo.ui.main
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.annotation.TargetApi
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -12,6 +13,7 @@ import android.widget.Button
 import android.widget.EditText
 import mobsoft.bme.hu.irodafoglalo.IrodaFoglaloApplication
 import mobsoft.bme.hu.irodafoglalo.R
+import mobsoft.bme.hu.irodafoglalo.ui.rooms.RoomsActivity
 import javax.inject.Inject
 
 /**
@@ -114,4 +116,8 @@ class MainActivity : AppCompatActivity(), MainScreen {
         }
     }
 
+    override fun showRooms() {
+        val intent = Intent(this@MainActivity, RoomsActivity::class.java)
+        startActivity(intent)
+    }
 }

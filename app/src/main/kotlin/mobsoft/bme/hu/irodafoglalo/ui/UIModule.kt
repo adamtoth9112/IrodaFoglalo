@@ -3,11 +3,10 @@ package mobsoft.bme.hu.irodafoglalo.ui
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import mobsoft.bme.hu.irodafoglalo.di.Network
 import mobsoft.bme.hu.irodafoglalo.ui.main.MainPresenter
+import mobsoft.bme.hu.irodafoglalo.ui.participants.ParticipantsPresenter
 import mobsoft.bme.hu.irodafoglalo.ui.rooms.RoomsPresenter
-import java.util.concurrent.Executor
-import java.util.concurrent.Executors
+import mobsoft.bme.hu.irodafoglalo.ui.times.TimesPresenter
 import javax.inject.Singleton
 
 /**
@@ -35,8 +34,13 @@ class UIModule(val context: Context) {
 
     @Provides
     @Singleton
-    @Network
-    fun provideNetworkExecutor(): Executor {
-        return Executors.newFixedThreadPool(1)
+    fun provideTimesPresenter(): TimesPresenter {
+        return TimesPresenter()
+    }
+
+    @Provides
+    @Singleton
+    fun provideParticipantsPresenter(): ParticipantsPresenter {
+        return ParticipantsPresenter()
     }
 }
