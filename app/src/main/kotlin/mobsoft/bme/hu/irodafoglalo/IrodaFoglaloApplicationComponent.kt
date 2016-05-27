@@ -5,7 +5,7 @@ import mobsoft.bme.hu.irodafoglalo.interactor.InteractorModule
 import mobsoft.bme.hu.irodafoglalo.interactor.db.DBInteractor
 import mobsoft.bme.hu.irodafoglalo.interactor.rooms.RoomsInteractor
 import mobsoft.bme.hu.irodafoglalo.model.prod.ModelModule
-import mobsoft.bme.hu.irodafoglalo.network.prod.MockNetworkModule
+import mobsoft.bme.hu.irodafoglalo.network.prod.NetworkModule
 import mobsoft.bme.hu.irodafoglalo.ui.UIModule
 import mobsoft.bme.hu.irodafoglalo.ui.main.MainActivity
 import mobsoft.bme.hu.irodafoglalo.ui.main.MainPresenter
@@ -21,7 +21,7 @@ import javax.inject.Singleton
  * Created by Adam Toth on 2016. 04. 19..
  */
 @Singleton
-@Component(modules = arrayOf(UIModule::class, InteractorModule::class, ModelModule::class, MockNetworkModule::class))
+@Component(modules = arrayOf(UIModule::class, InteractorModule::class, ModelModule::class, NetworkModule::class))
 interface IrodaFoglaloApplicationComponent {
     fun inject(mainActivity: MainActivity)
 
