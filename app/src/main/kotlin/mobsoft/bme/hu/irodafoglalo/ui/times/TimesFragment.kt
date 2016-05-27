@@ -66,10 +66,12 @@ class TimesFragment() : Fragment(), TimesScreen {
                     override fun onItemClick(view: View, position: Int) {
                         val time = timesAdapter?.getItem(position)
 
+                        throw UnsupportedOperationException()
+
                         var fr = ParticipantsFragment()
                         val data = Bundle()
                         data.putString("roomId", roomId)
-                        data.putString("userId", "1")
+                        data.putString("userId", "")
                         data.putString("timeId", time?.timeId)
                         fr.arguments.putBundle("data", data)
 

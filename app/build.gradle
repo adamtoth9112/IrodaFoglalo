@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
@@ -40,7 +42,7 @@ android {
             buildConfigField 'boolean', 'MOCK', 'true'
         }
         prod {
-            applicationId "mobsoft.bme.hu.irodafoglalo.prod"
+            applicationId "mobsoft.bme.hu.irodafoglalo"
             buildConfigField 'boolean', 'MOCK', 'false'
         }
     }
@@ -60,6 +62,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.github.salomonbrys.kotson:kotson:2.2.0'
     compile 'com.github.satyan:sugar:1.3'
+    compile 'com.google.android.gms:play-services-analytics:9.0.0'
 
     // Dagger 2 and Compiler
     compile "com.google.dagger:dagger-compiler:2.0.1"
@@ -104,16 +107,22 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     kapt 'com.google.dagger:dagger-compiler:2.0'
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
+        transitive = true;
+    }
 }
 buildscript {
     ext.kotlin_version = '1.0.1-2'
     repositories {
         mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'io.fabric.tools:gradle:1.+'
     }
 }
 repositories {
     mavenCentral()
+    maven { url 'https://maven.fabric.io/public' }
 }

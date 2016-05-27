@@ -59,6 +59,7 @@ class RoomsFragment : Fragment(), RoomsScreen {
         rvRooms?.addOnItemTouchListener(RecyclerItemClickListener(context,
                 object : OnItemClickListener {
                     override fun onItemClick(view: View, position: Int) {
+
                         val room = roomsAdapter?.getItem(position)
 
                         var time = TimesFragment()

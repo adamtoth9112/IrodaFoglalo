@@ -59,11 +59,14 @@ fun RoomsMock.Companion.process(request: Request?): Response? {
         responseString = ""
         responseCode = 200
     } else if (uri.startsWith(NetworkConfig.ENDPOINT_ADDRESS + "/participants") && request?.method() == "GET") {
-        val userId = uri.substring(uri.lastIndexOf("userId=") + 1, uri.lastIndexOf("roomId=") - 1)
-        val roomId = uri.substring(uri.lastIndexOf("roomId=") + 1, uri.lastIndexOf("timeId=") - 1)
+        val roomId = uri.substring(uri.lastIndexOf("roomId=") + 6, uri.lastIndexOf("roomId=") + 6 + 4)
         val timeId = uri.substring(uri.lastIndexOf('=') + 1)
 
-        val people = participants.filter { p -> p.userId.equals(userId) && p.roomId.equals(roomId) && p.timeId.equals(timeId) }
+        if (participants.size == 0) {
+            initParticipants()
+        }
+
+        val people = participants.filter { p -> p.roomId.equals(roomId) && p.timeId.equals(timeId) }
 
         responseString = GsonHelper.getGson().toJson(people)
         responseCode = 200
@@ -76,7 +79,7 @@ fun RoomsMock.Companion.process(request: Request?): Response? {
 }
 
 private fun initTimes() {
-    RoomsMock.times.add(Time("0", "410", "", "2016.05.26.", "8:00-10:00", false))
+    RoomsMock.times.add(Time("1", "410", "", "2016.05.26.", "8:00-10:00", false))
     RoomsMock.times.add(Time("0", "410", "", "2016.05.26.", "10:00-12:00", false))
     RoomsMock.times.add(Time("0", "410", "", "2016.05.26.", "12:00-14:00", false))
     RoomsMock.times.add(Time("0", "410", "", "2016.05.26.", "14:00-16:00", false))
@@ -92,20 +95,25 @@ private fun initTimes() {
     RoomsMock.times.add(Time("0", "410", "", "2016.05.29.", "10:00-12:00", false))
     RoomsMock.times.add(Time("0", "410", "", "2016.05.29.", "12:00-14:00", false))
     RoomsMock.times.add(Time("0", "410", "", "2016.05.29.", "14:00-16:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.26.", "8:00-10:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.26.", "10:00-12:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.26.", "12:00-14:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.26.", "14:00-16:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.27.", "8:00-10:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.27.", "10:00-12:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.27.", "12:00-14:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.27.", "14:00-16:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.28.", "8:00-10:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.28.", "10:00-12:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.28.", "12:00-14:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.28.", "14:00-16:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.29.", "8:00-10:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.29.", "10:00-12:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.29.", "12:00-14:00", false))
-    RoomsMock.times.add(Time("0", "515", "", "2016.05.29.", "14:00-16:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.26.", "8:00-10:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.26.", "10:00-12:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.26.", "12:00-14:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.26.", "14:00-16:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.27.", "8:00-10:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.27.", "10:00-12:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.27.", "12:00-14:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.27.", "14:00-16:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.28.", "8:00-10:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.28.", "10:00-12:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.28.", "12:00-14:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.28.", "14:00-16:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.29.", "8:00-10:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.29.", "10:00-12:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.29.", "12:00-14:00", false))
+    RoomsMock.times.add(Time("0", "611", "", "2016.05.29.", "14:00-16:00", false))
+}
+
+private fun initParticipants() {
+    RoomsMock.participants.add(Person("asd@ext.asd.hu", "", "Asd", "Dsa", "", "410", "1"))
+    RoomsMock.participants.add(Person("eerere@ext.asd.hu", "", "Eer", "Ere", "", "410", "1"))
 }
